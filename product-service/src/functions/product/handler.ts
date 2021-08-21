@@ -11,6 +11,11 @@ import PRODUCTS from './products';
 const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof ProductsList> = async (event) => {
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "https://d2hyfirjnphuti.cloudfront.net",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+        },
       body: JSON.stringify(PRODUCTS)
   };
 }
@@ -18,6 +23,11 @@ const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof ProductsList> =
 const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof ProductsById> = async (event) => {
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Headers" : "Content-Type",
+        "Access-Control-Allow-Origin": "https://d2hyfirjnphuti.cloudfront.net",
+        "Access-Control-Allow-Methods": "OPTIONS,POST,GET"
+        },
       body: JSON.stringify(PRODUCTS.find(item => item.id === event.pathParameters?.id))
     };
   }
