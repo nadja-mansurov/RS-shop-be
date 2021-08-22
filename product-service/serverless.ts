@@ -17,6 +17,7 @@ const serverlessConfiguration: AWS = {
     runtime: 'nodejs14.x',
     stage: 'dev',
     region: 'eu-central-1',
+    profile: 'rsSchoolAccount',
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
