@@ -7,7 +7,6 @@ import { ProductsById } from './schema';
 import PRODUCTS from './products';
 import { ORIGIN } from '../../libs/api.constant';
 
-
 export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof ProductsById> = async (event) => {
     const product = PRODUCTS.find(item => item.id === event.pathParameters?.id);
     if (product)
@@ -27,7 +26,7 @@ export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof Products
           "Access-Control-Allow-Origin": ORIGIN,
           "Access-Control-Allow-Methods": "OPTIONS,GET"
           },
-        body: 'Product not found'
+        body: 'Product is not found'
       };
   }
 

@@ -7,7 +7,7 @@ import { ProductsList } from './schema';
 import PRODUCTS from './products';
 import { ORIGIN } from '../../libs/api.constant';
 
-export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof ProductsList> = async (event) => {
+export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof ProductsList> = async () => {
     return {
       statusCode: 200,
       headers: {
