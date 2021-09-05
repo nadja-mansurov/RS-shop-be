@@ -1,12 +1,30 @@
 export const ProductsList = {
-  type: "array"
+  type: Array
 };
 
 export const ProductsById = {
-  type: "object",
+  type: Object,
   properties: {
     id: {
       type: "string"
     }
   }
 };
+
+export const Product = {
+  type: Object,
+  body: {
+    type: Object,
+    properties: {
+      title: {
+        type: "string"
+      },
+      descr: {
+        type: "string"
+      },
+      price: {
+        type: "string"
+      }
+    }
+}
+}
