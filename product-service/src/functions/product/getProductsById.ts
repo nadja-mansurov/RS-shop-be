@@ -11,8 +11,8 @@ const client = new Client(CRED);
 
 export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof ProductsById> = async (event) => {
   console.log(event);
-  const id = event.pathParameters?.id;
   try {
+    const id = event.pathParameters?.id;
     await client.connect();
 
     const product = await client.query(`SELECT * FROM PRODUCTS WHERE id=${id}`)
