@@ -10,7 +10,8 @@ import { ORIGIN } from '../../libs/api.constant';
 const { Client } = require('pg');
 const client = new Client(CRED);
 
-export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof ProductsList> = async () => {
+export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof ProductsList> = async (event) => {
+  console.log(event);
     
   try {
     await client.connect();

@@ -11,6 +11,7 @@ const { Client } = require('pg');
 const client = new Client(CRED);
 
 export const postNewProduct: ValidatedEventAPIGatewayProxyEvent<typeof Product> = async (event) => {
+  console.log(event);
   const body = JSON.parse(JSON.stringify(event.body));
 
   if (!body.name || !body.descr || !body.price) {

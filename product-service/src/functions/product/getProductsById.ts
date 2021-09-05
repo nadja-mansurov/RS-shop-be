@@ -10,6 +10,7 @@ const { Client } = require('pg');
 const client = new Client(CRED);
 
 export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof ProductsById> = async (event) => {
+  console.log(event);
   const id = event.pathParameters?.id;
   try {
     await client.connect();
