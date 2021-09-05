@@ -7,11 +7,11 @@ import CRED from '../../../../CRED';
 import { ORIGIN } from '../../libs/api.constant';
 
 const { Client } = require('pg');
-const client = new Client(CRED);
 
 export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof ProductsById> = async (event) => {
   console.log(event);
   try {
+    const client = new Client(CRED);
     const id = event.pathParameters?.id;
     await client.connect();
 
@@ -38,6 +38,7 @@ export const getProductsById: ValidatedEventAPIGatewayProxyEvent<typeof Products
         body: 'Product is not found'
       };
     } catch(e) {
+      await client.end();
       return {
         statusCode: 500,
         headers: {

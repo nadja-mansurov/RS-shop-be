@@ -8,16 +8,15 @@ import CRED from '../../../../CRED';
 import { ORIGIN } from '../../libs/api.constant';
 
 const { Client } = require('pg');
-const client = new Client(CRED);
 
 export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof ProductsList> = async (event) => {
   console.log(event);
-    
   try {
+    const client = new Client(CRED);
     await client.connect();
 
     const res = await client.query('SELECT * FROM PRODUCTS')
-    await client.end()
+    await client.end();
 
     if (res?.rows) {
       return {
@@ -30,6 +29,7 @@ export const getProductsList: ValidatedEventAPIGatewayProxyEvent<typeof Products
         body: JSON.stringify(res.rows)
       };
     } else {
+      await client.end();
       return {
         statusCode: 404,
         headers: {
