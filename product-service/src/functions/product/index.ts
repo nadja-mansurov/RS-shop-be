@@ -24,4 +24,16 @@ export const getProductsById = {
       }
     ]
   }
+
+export const postNewProduct = {
+    handler: `${handlerPath(__dirname)}/handler.productAdd`,
+    events: [
+      {
+        http: {
+          method: 'post',
+          path: 'products'
+        }
+      }
+    ]
+  }
   
